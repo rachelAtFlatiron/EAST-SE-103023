@@ -12,12 +12,12 @@ const bookStore = {
       price: 10.00,
       reviews: [{userID: 1, content:'Good book, but not great for new coders'}],
       inventory: 10,
-      imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51IKycqTPUL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg'
+      imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51IKycqTPUL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg' //get this value: bookStore.inventory[0].imageUrl
     },
     {
       id: 2,
       title: 'JavaScript & JQuery: Interactive Front-End Web Development',
-      author: 'Jon Duckett',
+      author: 'Jon Duckett', //get this value: bookStore.inventory[1].author 
       price: 45.75,
       reviews: [{userID: 15, content:'good way to learn JQuery'}],
       inventory: 2,
@@ -70,3 +70,12 @@ const bookStore = {
     }
   ]
 }
+
+//take inventory, create a new array of JUST the titles
+//['Eloquent JavaScript...', 'JavaScript & JQuery...', 'JavaScript: The Good Parts', ...]
+
+const getTitle = (curBook) => {return curBook.title}
+let inventory = bookStore.inventory 
+let titles = inventory.map(getTitle)
+
+bookStore.inventory.map((el) => {return el.title})
