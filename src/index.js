@@ -12,6 +12,7 @@ const bookForm = document.querySelector('#book-form'); //book form
 //saving in a const for ease of access later on
 const url = "http://localhost:4000"
 //✅ 2. fetch request to get all books
+
 //✅ 2a. save the base url as a const (to reuse later)
 //✅ 2b. render books from database instead of from data.js
 fetch(`${url}/books`) //returns promise
