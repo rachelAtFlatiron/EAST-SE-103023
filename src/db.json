@@ -150,15 +150,6 @@
       "imageUrl": "https://m.media-amazon.com/images/I/91YfNb49PLL._SY522_.jpg",
       "reviews": [],
       "id": 8
-    },
-    {
-      "title": "Designing Data Intensive Applications",
-      "author": "Martin Kleppmann",
-      "price": 20,
-      "inventory": 11,
-      "imageUrl": "https://m.media-amazon.com/images/I/91YfNb49PLL._SY522_.jpg",
-      "reviews": [],
-      "id": 9
     }
   ]
 }
