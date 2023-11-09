@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>P1L7 - Communicating with External APIs slides</title>
+  <title>07_external_apis</title>
 
   <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
   <meta name="author" content="Hakim El Hattab">
@@ -16,6 +16,8 @@
 
   <link rel="stylesheet" href="libs/reveal.js/4.3.1/reset.css">
   <link rel="stylesheet" href="libs/reveal.js/4.3.1/reveal.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <!-- highlight Theme -->
   
@@ -49,10 +51,15 @@
 
    <!-- css list -->
 	
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-  
 
    
+<style>
+  :root {
+     --r-main-font-size: 24px;
+        
+  }
+</style>
+
 
 </head>
 
@@ -88,7 +95,9 @@
 <li>Observe how to parse API documentation</li>
 <li>Observe how to send a GET request to an external API with / without an API key</li>
 </ul>
-
+<aside class="notes">
+- no API key will make life much easier
+</aside>
             </section>
     
 
@@ -104,7 +113,12 @@
   style="width: 90%"
 /></p>
 <p><small><a href="https://medium.com/vody-techblog/understanding-what-apis-are-all-about-ff2513b76a55">https://medium.com/vody-techblog/understanding-what-apis-are-all-about-ff2513b76a55</a></small></p>
-
+<aside class="notes">
+- API: application programming interface <br />
+- web server -> requests -> data <br />
+- API is between requests and responses <br />
+- menu = documentation 
+</aside>
             </section>
     
 
@@ -119,7 +133,10 @@
   alt="Out of control"
   width="50%"
 /></p>
-
+<aside class="notes">
+- no control over API's capabilities <br />
+- if API doesn't support what you want to do, you will need a different API
+</aside>
             </section>
     
 
@@ -134,7 +151,10 @@
   alt="I know Kung Fu"
   width="50%"
 /></p>
-
+<aside class="notes">
+- you can just put the URL in and you get all the info needed <br />
+- going to show how to read docs
+</aside>
             </section>
     
 
@@ -149,7 +169,48 @@
 <li><a href="https://developers.google.com/books/docs/overview" target="_blank">Google Books API</a></li>
 <li><a href="https://github.com/toddmotto/public-apis" target="_blank">List of Publicly accessible APIs</a></li>
 </ul>
+<aside class="notes">
+- https://github.com/toddmotto/public-apis for public apis <br />
+- if key, need to keep API private <br />
+- if sending fetch from front end/client side you can't keep key private and someone can see/steal it, to keep private wait until phase 3 <br />
+- look through and show Auth column (no is easy because don't need any security): often connected to rate limit or your account or credit cards (charged if exceeding rate limit) <br />
+- oAuth: e.g. sign in with google/facebook; allow user to access application from another app - however Google Books has public info  <br />
+- no safe way to keep security private
+</aside>
+            </section>
+    
 
+
+
+    
+        <section >
+            
+            <h3>Reddit</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Reddit_is_killing_third-party_applications.svg/440px-Reddit_is_killing_third-party_applications.svg.png" />
+<aside class="notes">
+- reddits API used to be free so three were a lot of third party clients (apollo) <br />
+- they started charging (supposedly because of AI) <br />
+- charging for API caused Apollo to cease development causing protests <br />
+https://en.wikipedia.org/wiki/2023_Reddit_API_controversy
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>TV API Tour</h3>
+<p><a href="https://www.tvmaze.com/api">https://www.tvmaze.com/api</a></p>
+<aside class="notes">
+- if docs don't make you feel comfortable you probs shouldn't use the API <br />
+- notice the description!!! <br />
+- endpoint is after the URL <br />
+- explore the documentation for the search endpoint <br />
+- search tvmaze API in browser (use API endpoint) <br />
+- review structure of URL, including queries (?), and variables (:id)
+</aside>
             </section>
     
 
@@ -165,7 +226,12 @@
 <li class="fragment">Click on the Dropdown near the top of the page (to the right of the Google Cloud logo) to create a new project. I’m calling mine Books Project.</li>
 <li class="fragment">Click on the Create Credentials button and select API key.</li>
 </ul>
-
+<aside class="notes">
+1. API key is enough for public data in google books <br />
+2. only follow the API key instructions <br />
+3. need to create project to specify which APIs / features for specific current project <br />
+4. if multiple projects, need different billing/traffic/credentials/permissions/etc. 
+</aside>
             </section>
     
 
@@ -180,7 +246,8 @@
 <li class="fragment">In the search input at the top, type: Books API and select it from the Marketplace search results</li>
 <li class="fragment">Click the blue enable button to allow your API key to access the Books API</li>
 </ul>
-
+<aside class="notes">
+</aside>
             </section>
     
 
@@ -201,7 +268,10 @@
 <li class="fragment">add the API key to a local file in your project. (<code>const API_KEY=&quot;paste_your_key_here&quot;</code>)</li>
 <li class="fragment"><b>Make sure to tell git to ignore this file!</b></li>
 </ul>
-
+<aside class="notes">
+- CREATE SEPARATE FILE FOR KEY <br />
+- create keys.js
+</aside>
             </section>
     
 
@@ -218,7 +288,8 @@
 <li class="fragment">✅⁇: check your version control tab within VSCode and make sure you <b>don’t</b> see your <code>keys.js</code> file there. If you do, then check for a mismatch between what you have in your <code>.gitignore</code> and the name/path to the <code>keys.js</code> file.</li>
 <li class="fragment">✅ When keys.js <b>doesn’t appear</b> in the list of files with untracked changes, you’ve done this step correctly.</li>
 </ul>
-
+<aside class="notes">
+</aside>
             </section>
     
 
@@ -238,7 +309,8 @@
   .then(res =&gt;res.json())
   .then(console.log);
 </code></pre>
-
+<aside class="notes">
+</aside>
             </section>
     
 
@@ -330,7 +402,7 @@
       //#keyboardCondition: null,
       overview: true,
       center: true,
-      touch: true,
+      touch: false,
       loop: false,
       rtl: false,
       //#navigationMode: 'default', linear grid
@@ -379,7 +451,7 @@
       //Presentation Size
       width: 1400,
 			height: 900,
-			margin: 0.04,
+			margin: 0.01,
       minScale: 0.2,
       maxScale: 2,
       disableLayout: false,
