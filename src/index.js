@@ -6,10 +6,7 @@ const apiRoot = "https://api.tvmaze.com";
 //✅ 1. on tv maze api search form submit 
 apiSearchForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    //resultsDiv.clear()
     //✅ 1a. send search value to API
-
-    //✅ 1d. render all episodes of show
     let query = encodeURI(e.target.search.value)
     // console.log(query)
    //https://api.tvmaze.com/search/shows?q=the%20knick
@@ -38,6 +35,7 @@ apiSearchForm.addEventListener('submit', (e) => {
         .then(res => res.json())
         .then(shows => {
             console.log(shows)
+            //✅ 1d. render all episodes of show
             shows.forEach(show => {
                 let season = document.createElement('p')
                 let poster = document.createElement('img')
@@ -55,8 +53,20 @@ apiSearchForm.addEventListener('submit', (e) => {
 //✅ 2. create keys.js file to hold API key for Google books
 
 //✅ 3b. make fetch request to google books
+fetch(`https://www.googleapis.com/books/v1/volumes?q=harry%20potter&key=${API_KEY}`)
+.then(res => res.json())
+.then(data => {
+    //✅ 3c. display data on page for one book
+    console.log(data.items)
+    //✅ 3d. iterate over all items and display data on page
+    data.items.forEach(item => {
+        console.log(item.volumeInfo.title)
+        let title = document.createElement('h2')
+        let image = document.createElement('img')
+        image.src = item.volumeInfo.imageLinks.thumbnail
+        title.textContent = item.volumeInfo.title 
+        resultsDiv.append(title, image)
+    })
+})
 
-//✅ 3c. display data on page for one book
 
-
-//✅ 3d. iterate over all items and display data on page

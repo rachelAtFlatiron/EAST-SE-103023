@@ -1,5 +1,5 @@
 //✅ 2. create keys.js file to hold API key for Google books
-
+const API_KEY = "AIzaSyCC1RHuCcFXQMu_I7uSxlLaC3hnrwAIlHg"
 
 //✅ 2a. save API_KEY
 
